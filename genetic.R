@@ -164,8 +164,8 @@ calculateProcessingTime <- function(chromosome) {
     
   }
   
-  minimumProcessingTime <- min(processingTimeForMachineOne, processingTimeForMachineTwo)
-  chromosome[16] <- minimumProcessingTime
+  maximumProcessingTime <- max(processingTimeForMachineOne, processingTimeForMachineTwo)
+  chromosome[16] <- maximumProcessingTime
   return(chromosome)
 }
 
