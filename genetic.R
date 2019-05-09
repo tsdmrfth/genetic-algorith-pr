@@ -132,8 +132,15 @@ calculateProcessingTime <- function(chromosome) {
     jobName <- paste('Job', sep = '', job)
     processingTimeForJob <- as.integer(readFromTable('table1.csv', machine, jobName))
     
-    if (job != 3) {
-      processingTimeForJob <- processingTimeForJob / 2
+    maximumJobCountForJobOne <- chromosome[13]
+    maximumJobCountForJobTwo <- chromosome[14]
+    
+    if (job == 1) {
+      processingTimeForJob <-
+        processingTimeForJob / maximumJobCountForJobOne
+    } else if (job == 2) {
+      processingTimeForJob <-
+        processingTimeForJob / maximumJobCountForJobTwo
     }
     
     if(machine == 1){
@@ -214,13 +221,9 @@ doCrossover <- function(chromosome1, chromosome2) {
     newChromosome1 <- c(newChromosome1, newSecondSection1)
     newChromosome2 <- c(newChromosome2, newSecondSection2)
     
-    randomIndexForChromosomeOne <- as.integer(runif(1, 1, 12))
-    randomIndexForChromosomeTwo <- as.integer(runif(1, 1, 12))
-    randomGeneForChromosomeOne <- runif(1)
-    randomGeneForChromosomeTwo <- runif(1)
-    
-    newChromosome1[randomIndexForChromosomeOne] <- randomGeneForChromosomeOne
-    newChromosome2[randomIndexForChromosomeTwo] <- randomGeneForChromosomeTwo
+    randomIndexForChromosome <- as.integer(runif(1, 1, 12))
+    randomGeneForChromosome <- runif(1)
+    newChromosome1[randomIndexForChromosome] <- randomGeneForChromosome
     
     return(rbind(newChromosome1, newChromosome2))
 }
