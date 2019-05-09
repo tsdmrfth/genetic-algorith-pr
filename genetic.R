@@ -214,12 +214,17 @@ doCrossover <- function(chromosome1, chromosome2) {
     newChromosome1 <- c(newChromosome1, newSecondSection1)
     newChromosome2 <- c(newChromosome2, newSecondSection2)
     
+    randomIndexForChromosomeOne <- as.integer(runif(1, 1, 12))
+    randomIndexForChromosomeTwo <- as.integer(runif(1, 1, 12))
+    randomGeneForChromosomeOne <- runif(1)
+    randomGeneForChromosomeTwo <- runif(1)
+    
+    newChromosome1[randomIndexForChromosomeOne] <- randomGeneForChromosomeOne
+    newChromosome2[randomIndexForChromosomeTwo] <- randomGeneForChromosomeTwo
+    
     return(rbind(newChromosome1, newChromosome2))
 }
 
 for (i in 1:50) {
   startProcess()
 }
-
-
-
